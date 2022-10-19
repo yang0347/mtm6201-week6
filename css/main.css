@@ -37,3 +37,14 @@ h2 + p{
 .stars span{
     cursor: pointer;
 }
+
+/* [] is attribute selector = 特指 */
+a[href="#"]{
+    color: tomato;
+}
+
+a[href^="http"]{
+    border-left: 4px solid #551CF1;
+}
+
+
