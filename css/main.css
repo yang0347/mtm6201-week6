@@ -1,3 +1,11 @@
+:root{
+    /* valid: --special-color --specialcolor --specialColor */
+    /* invalid: --special color 更改数值，下面用同样的设置都会更改 */
+    --special-color:tomato;
+    --second-color:#551CF1;
+    --light-color:white;
+    --dark-color:black;
+}
 .container{
     max-width: 900px;
     margin: 0 auto;
@@ -23,8 +31,10 @@ main > p{
 
 /* + is adjacent combinator = 相邻的下一个发生变化 */
 h2 + p{
-    background-color: black;
-    color: white;
+    /* background-color: black; 
+    color: white;*/
+    background-color: var(--dark--color);
+    color: var(--light-color);
     padding: 1rem;
 }
 
@@ -33,18 +43,85 @@ h2 + p{
     opacity: .5;
 }
 
-/* 当鼠标悬浮在星星上时，光标变成小手 */
+/* 当鼠标悬浮在星星上时，光标变成小手 */ 
 .stars span{
     cursor: pointer;
 }
 
-/* [] is attribute selector = 特指 */
+/* [] is attribute selector = 特指  比如[class=stars]与.stars是一个意思，但是不能这么写 */
 a[href="#"]{
-    color: tomato;
+    /*  color: tomato; */
+    color:var(--special-color);
+}
+/* special link http ---  ^ begins with, * contains, $ ends with */
+a[href^="http"]{
+    /*border-left: 4px solid #551CF1;*/
+    border-left: 4px solid var(--second-color);
 }
 
-a[href^="http"]{
-    border-left: 4px solid #551CF1;
+/* state related pseudo classes child */
+nav a,
+nav a:link,
+nav a:visited{
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: transform .5s;
 }
+
+nav a:hover,
+nav a:focus{
+    text-decoration: underline;
+    transform: scale(1.4);
+}
+
+nav a:active{
+    transform: scale(1.4) translateX(10px);
+}
+
+/* Pseudo elements */
+a[href$=".pdf"]::after{
+    content: "\2931";
+    font-size: 1.25rem;
+    /* color: tomato; */
+    color:var(--special-color);
+}
+
+h2+p::first-line{
+    /* color:tomato; */
+    color:var(--special-color);
+}
+
+h3+p::first-letter{
+    background-color: var(--second-color);/* blue; */
+    /*color:white;*/
+    color:var(--light-color);
+    padding: .25rem;
+    margin-right:.10rem;
+}
+
+/* calc() function */
+/*.google{
+    display: block;
+    background-color: lavender;
+    width: 100%;
+    padding: 2rem;
+    margin: 1rem; */
+    /* also there is a 4px border on the left 在a[]*/
+
+    .google{
+      display: block;
+      background-color: lavender;
+      width: calc(100% - 1rem - 2rem - 2rem - 1rem - 4px); 
+      /*  calc(width - margin left - padding left hand side - border - padding right - margin right
+      border可以放在最后，前面margin和padding可以合并，数字加一起 */
+    }
+ 
+
+
+
+
+
+
 
 
