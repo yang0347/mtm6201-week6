@@ -114,7 +114,7 @@ h3+p::first-letter{
       background-color: lavender;
       width: calc(100% - 1rem - 2rem - 2rem - 1rem - 4px); 
       /*  calc(width - margin left - padding left hand side - border - padding right - margin right
-      border可以放在最后，前面margin和padding可以合并，数字加一起 */
+      border可以放在最后，前面margin和padding可以合并，数字加一起 eg. calc(100% - 6rem - 4px)*/
     }
  
 
